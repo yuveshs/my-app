@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logind {
+  width: 200px;
+  height: 200px;
+  background-color: blueviolet;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+.bu{
+   position: relative;
+    background-color: azure;
+    padding: 5px;
+    left:-5px;
+}
+.d1{
+    
+    position: absolute;
+    top:0px;
+    left: 0px;
+    background-color: green;
+    color: tomato;
+    display: flex;
+    width: 100%;
+    padding: 20px;
+   height: fit-content;
+  margin: auto; /* center if in block layout */
+   justify-content: flex-end;
+}
+.forgot {
+ top:1px;
+ left:1px;
+ position: relative;
+  
+}
+
+/* --- Register --- */
+.continuer {
+  display: flex;
+  width:200px;
+  height: 200px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(34, 176, 215);
+}
+.new{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
