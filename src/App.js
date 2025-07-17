@@ -1,46 +1,43 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import './App.css';
-
-function App() {
-  const [formData, setFormData] = useState({
-    regno: '',
-    dob: ''
-  });
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Submitted Data:', formData);
-    alert(`Reg No: ${formData.regno}\nDate of Birth: ${formData.dob}`);
-  };
+import Register from './Register';
+function Home() {
+  const navigate = useNavigate();
 
   return (
-    <div className="App">
-      <h2>Student Form</h2>
-      <form onSubmit={handleSubmit} className="form-container">
-        <label>
-          Registration Number:
-          <input
-            type="text"
-            name="regno"
-            value={formData.regno}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <label>
-          Date of Birth:
-          <input type="date" name="dob" value={formData.dob} onChange={handleChange}required/>
-        </label>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+    <>
+      <div className="d1">
+        <div className="bu">
+          <button className="btn1">Home</button>
+          <button className="btn2">About</button>
+        </div>
+      </div>
+
+      <div>
+        <form className="logind" onSubmit={(e) => e.preventDefault()}>
+          <input className="name" placeholder="Username" />
+          <input className="password" type="password" placeholder="Password" />
+          <button className="login">Login</button>
+          <button
+            className="register"
+            type="button"
+            onClick={() => navigate('Register')}
+          >
+            Register
+          </button>
+        </form>
+      </div>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/register" element={<Register />} />
+    </Routes>
   );
 }
 
