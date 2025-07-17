@@ -1,21 +1,35 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './App.css';
 
 function Register() {
-  const [userName, setUserName] = useState('');
+  const [username, setuserName] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const [userData, setUserData] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault(); // prevent page reload
-    if (!userName || !password) {
+    if (!username || !password) {
       setMessage("Please enter both username and password");
       setUserData(null);
       return;
     }
-    setUserData({ username: userName, password: password });
-    setMessage("User registered successfully!");
+    try{
+    const res=await axios.post('http://localhost:3001/register', {
+      username,
+      password,});
+      if(res.status === 200) {
+      setUserData({ username: username, password: password });
+    setMessage("User registered successfully!");}
+    else {
+      setMessage("User registration failed. Please try again.");
+      setUserData(null);}
+    }
+    catch{
+      setMessage("Error registering user. Please try again.");
+    }
+    
   };
 
   return (
@@ -25,8 +39,8 @@ function Register() {
           <input
             className="name"
             placeholder="Username"
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
+            value={username}
+            onChange={(e) => setuserName(e.target.value)}
           />
           <input
             className="password"

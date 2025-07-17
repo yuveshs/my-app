@@ -17,7 +17,7 @@ export async function adduser (req, res){
     const{username, password} = req.body;
     const newUser=new User({username, password});
     await newUser.save();
-    res.status(201).json("User created successfully");
+    res.status(200).json("User created successfully");
     }
     catch(error) {
         console.error("user not created:", error);
